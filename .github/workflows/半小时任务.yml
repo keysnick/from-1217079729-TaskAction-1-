@@ -58,11 +58,3 @@ jobs:
           TZ: Asia/shanghai
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
 
-
-      - name: '运行 【百度极速新版】'
-        run: |
-          cd ~/TaskAction/workflow
-          node baidu_speed_new.js
-        env:
-          TZ: Asia/shanghai
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
