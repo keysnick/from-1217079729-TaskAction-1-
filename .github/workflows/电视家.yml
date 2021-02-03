@@ -50,6 +50,14 @@ jobs:
         env:
           TZ: Asia/shanghai
 
+      - name: '运行 【百度极速版】'
+        run: |
+          cd ~/TaskAction/workflow
+          node baidu_speed.js
+        env:
+          TZ: Asia/shanghai
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
+
 
       - name: '运行 【百度极速新版】'
         run: |
@@ -57,3 +65,4 @@ jobs:
           node baidu_speed_new.js
         env:
           TZ: Asia/shanghai
+          BARK_PUSH: ${{ secrets.BARK_PUSH }}
