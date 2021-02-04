@@ -189,10 +189,7 @@ if ($.isNode()) {
     );
   }
 
-  if (now.getHours() >= 16&&now.getHours() <=22){
-  try { await videoread();}catch(e){ }
-//    await videoread();//自动刷视频
-  }else{
+
     console.log(`\n✅ 打印任务状态清单`)
     try { await taskcenter();}catch(e){ }
 //    await taskcenter(); //任务中心
@@ -203,12 +200,15 @@ if ($.isNode()) {
 
    try { await sharevideo();}catch(e){ }
 //    await sharevideo();//分享任务
-  }
+
+  try { await videoread();}catch(e){ }
+//    await videoread();//自动刷视频
+
+
   await showmsg();
 
-
-      console.log(`========================本次任务执行完毕，休息10分钟==============================\n`);
-      await $.wait(600000)
+      console.log(`========================本次任务执行完毕，休息5分钟==============================\n`);
+      await $.wait(300000)
 
     }
   }else{
