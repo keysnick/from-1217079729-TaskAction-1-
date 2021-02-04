@@ -46,3 +46,12 @@ jobs:
           source_branch: "jd_code2"
           destination_branch: "jd_code2"
           github_token: ${{ secrets.PAT || github.event.client_payload.PAT }}
+
+      - name: sync selfTask
+        uses: repo-sync/github-sync@v2
+        if: env.PAT
+        with:
+          source_repo: "https://github.com/pxylen/SelfTask.git"
+          source_branch: "main"
+          destination_branch: "selfTask"
+          github_token: ${{ secrets.PAT || github.event.client_payload.PAT }}
