@@ -122,8 +122,8 @@ if ($.isNode() && process.env.XP_iboxpayHEADER) {
 }
 if (COOKIE.iboxpayheaderVal) {
     XP_COOKIES = {
-        "iboxpayheaderVal": COOKIE.iboxpayheaderVal.split('&'),
-        "refreshtokenVal": COOKIE.refreshtokenVal.split('&'),
+        "iboxpayheaderVal": COOKIE.iboxpayheaderVal.split('\n'),
+        "refreshtokenVal": COOKIE.refreshtokenVal.split('\n'),
     }
     Length = XP_COOKIES.iboxpayheaderVal.length;
 }
@@ -255,20 +255,15 @@ if (isGetCookie) {
  //==============自定义循环==========================
   if ($.isNode()) {
     while(true){
+      await all();
+      await msgShow();
 
-        await all();
-        await msgShow();
-
-      console.log(`========================本次任务执行完毕，休息1分钟==============================\n`);
-      await $.wait(60000)
-
+      console.log(`========================本次任务执行完毕，休息3分钟==============================\n`);
+      await $.wait(180000)
     }
   }else{
-
-
-        await all();
-        await msgShow();
-
+       await all();
+       await msgShow();
   }
  //==============自定义循环==========================
 
