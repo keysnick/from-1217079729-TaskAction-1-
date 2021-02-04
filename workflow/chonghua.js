@@ -189,11 +189,8 @@ if ($.isNode()) {
     );
   }
 
-  if (now.getHours() == 18){
+  if (now.getHours() >= 16&&now.getHours() <=22){
   try { await videoread();}catch(e){ }
-//    await videoread();//自动刷视频
-  }else if (now.getHours() == 20){
-    try { await videoread();}catch(e){ }
 //    await videoread();//自动刷视频
   }else{
     console.log(`\n✅ 打印任务状态清单`)
