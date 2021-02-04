@@ -208,7 +208,7 @@ if ($.isNode()) {
 
    await showmsg();
 
-   console.log(`========================本次任务执行完毕，休息10分钟==============================\n`);
+   console.log(`===本次任务执行完毕，休息10分钟-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  ===\n`)
    await $.wait(600000)
 
     }
