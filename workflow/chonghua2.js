@@ -54,7 +54,7 @@ now = new Date(new Date().getTime() + new Date().getTimezoneOffset()*60*1000 + 8
 
 let task = '';
 let tz = '';
-let uid = '347494'
+let uid = '347509'
 let headerVal = {
   'User-Agent': `cong hua shi pin/1.4.6 (iPhone; iOS 14.4; Scale/2.00)`,
   'Accept': `*/*`,
