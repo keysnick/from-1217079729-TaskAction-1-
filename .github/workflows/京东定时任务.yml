@@ -215,14 +215,6 @@ jobs:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
 
-      - name: '运行 【源头好物红包】'
-        run: |
-          cd ~/TaskAction
-          node jd_coupon.js
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
-
       - name: '运行 【京东超级盒子】'
         run: |
           cd ~/TaskAction
