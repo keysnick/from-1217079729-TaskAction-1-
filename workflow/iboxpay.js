@@ -331,13 +331,22 @@ async function all() {
 
         console.log(`📍本次运行等待${dd}秒` + '\n')
         if (LIVE != 61) {
-            await play(); //播放
-            await video(); //视频
+        try { await play();}catch(e){ }
+        try { await video();}catch(e){ }
+
+//            await play(); //播放
+//            await video(); //视频
             if (!newcashcs.amount) {
-                await newvideo(); //新人福利
+
+            try { await newvideo();}catch(e){ }
+
+//                await newvideo(); //新人福利
             }
             if ($.video.data.goldCoinNumber != 0) {
-                await goldvideo(); //金蛋视频
+
+              try { await goldvideo();}catch(e){ }
+
+//                await goldvideo(); //金蛋视频
             }
         }
         await $.wait(dd * 1000)
@@ -509,7 +518,11 @@ function play(timeout = 0) {
     return new Promise((resolve) => {
         setTimeout(() => {
             for (let i = 0; i < CS; i++) {
+
                 setTimeout(() => {
+
+                try {
+
                     header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts()}`)
                     do playTime = Math.floor(Math.random() * 31);
                     while (playTime < 20)
@@ -547,7 +560,11 @@ function play(timeout = 0) {
                             resolve()
                         }
                     })
+
+                  }catch(e){ }
+
                 }, i * 30000);
+
             }
         }, timeout)
     })
@@ -559,6 +576,9 @@ function video(timeout = 0) {
             for (let i = 0; i < CS; i++) {
                 $.index = i + 1
                 setTimeout(() => {
+
+                 try {
+
                     header = iboxpayheaderVal.replace(`${token}`, `${TOKEN}`).replace(`${oldtime}`, `${tts()}`)
                     videobodyVal = `{"type":1,"videoList":[{"videoId":"${videoPublishId}","type":1,"isFinishWatch":false}],"actId":"${spid.actId}"}`
                     let url = {
@@ -581,6 +601,9 @@ function video(timeout = 0) {
                             resolve()
                         }
                     })
+
+                     }catch(e){ }
+
                 }, i * 30000);
             }
             setTimeout(() => {
