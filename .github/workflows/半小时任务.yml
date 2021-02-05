@@ -36,19 +36,19 @@ jobs:
           git checkout master
           npm install
 
-      - name: '运行 【电视家】'
-        run: |
-          cd ~/TaskAction/workflow
-          node dianshijia.js
-        env:
-          TZ: Asia/shanghai
+#       - name: '运行 【电视家】'
+#         run: |
+#           cd ~/TaskAction/workflow
+#           node dianshijia.js
+#         env:
+#           TZ: Asia/shanghai
 
-      - name: '运行 【QQ阅读App】'
-        run: |
-          cd ~/TaskAction/workflow
-          node QQread.js
-        env:
-          TZ: Asia/shanghai
+#       - name: '运行 【QQ阅读App】'
+#         run: |
+#           cd ~/TaskAction/workflow
+#           node QQread.js
+#         env:
+#           TZ: Asia/shanghai
 
       - name: '运行 【百度极速版】'
         run: |
