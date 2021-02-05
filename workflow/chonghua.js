@@ -416,6 +416,7 @@ function timered(task) {
         headers: headerVal,
       };
       $.post(timeredurl, async (error, response, data) => {
+      try{
         let timered = JSON.parse(data)
         nexttime = (timered.data.remain_time)*1000
         if (timered.code === 1007) {
@@ -427,8 +428,8 @@ function timered(task) {
           $.log(`【时段奖励】：获取${timered.data.score}金币`);
           $.log(`【下个时段】：`+ time(nexttime));
           tz += `【时段奖励】：${timered.data.score}金币\n`;
-        }
-
+         }
+       }catch(e){}
         resolve()
       })
     })
