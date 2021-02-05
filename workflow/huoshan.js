@@ -193,8 +193,8 @@ if (!hsheaderArr[0] && !hsbodyArr[0] && !hsurlArr[0]) {
   }
  }
 
-//      console.log(`========================本次任务执行完毕，休息5分钟==============================\n`);
-//      await $.wait(300000)
+   console.log(`===本次任务执行完毕，休息1分钟-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  ===\n`)
+      await $.wait(60000)
 
     }
   }else{
