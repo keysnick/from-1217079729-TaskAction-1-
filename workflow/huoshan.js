@@ -37,7 +37,7 @@ let playbody = $.getdata('playbody')
 let hsurl = $.getdata('hsurl')
 let hsheader = $.getdata('hsheader')
 let hsbody = $.getdata('hsbody')
-let tz = ($.getval('tz') || '1');//0关闭通知，1默认开启
+let tz = ($.getval('tz') || '0');//0关闭通知，1默认开启
 const invite=1;//新用户自动邀请，0关闭，1默认开启
 const logs =0;//0为关闭日志，1为开启
 var hour=''
@@ -160,44 +160,9 @@ if (!hsheaderArr[0] && !hsbodyArr[0] && !hsurlArr[0]) {
     return;
   }
 
-
- //==============自定义循环==========================
-  if ($.isNode()) {
-    while(true){
-
-   console.log(`------------- 共${hsheaderArr.length}个账号----------------\n`)
-  for (let i = 0; i < hsheaderArr.length; i++) {
-    if (hsheaderArr[i]) {
-      message = ''
-      note = ''
-      hsurl = hsurlArr[i];
-      hsheader = hsheaderArr[i];
-      hsbody = hsbodyArr[i];
-      playurl = playurlArr[i];
-      playheader = playheaderArr[i];
-      playbody = playbodyArr[i];
-      $.index = i + 1;
-      console.log(`\n开始【抖音火山版${$.index}】`)
-      //await ck()
-      await app_alert_check()
-      await device_register()
-      await userinfo()
-      await gettoken()
-      await sign_in()
-      //await ad()
-      await hotsoonfeed()
-      await control()
-      await lottery_main()
-      await lottery()
-      await showmsg()
-  }
- }
-
-   console.log(`===本次任务执行完毕，休息1分钟-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  ===\n`)
-      await $.wait(60000)
-
-    }
-  }else{
+  //==============自定义循环==========================
+    if ($.isNode()) {
+      while(true){
 
    console.log(`------------- 共${hsheaderArr.length}个账号----------------\n`)
   for (let i = 0; i < hsheaderArr.length; i++) {
@@ -227,14 +192,49 @@ if (!hsheaderArr[0] && !hsbodyArr[0] && !hsurlArr[0]) {
   }
  }
 
+     console.log(`===本次任务执行完毕，休息1分钟-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  ===\n`)
+     await $.wait(60000)
+
+      }
+    }else{
+
+   console.log(`------------- 共${hsheaderArr.length}个账号----------------\n`)
+  for (let i = 0; i < hsheaderArr.length; i++) {
+    if (hsheaderArr[i]) {
+      message = ''
+      note = ''
+      hsurl = hsurlArr[i];
+      hsheader = hsheaderArr[i];
+      hsbody = hsbodyArr[i];
+      playurl = playurlArr[i];
+      playheader = playheaderArr[i];
+      playbody = playbodyArr[i];
+      $.index = i + 1;
+      console.log(`\n开始【抖音火山版${$.index}】`)
+      //await ck()
+      await app_alert_check()
+      await device_register()
+      await userinfo()
+      await gettoken()
+      await sign_in()
+      //await ad()
+      await hotsoonfeed()
+      await control()
+      await lottery_main()
+      await lottery()
+      await showmsg()
   }
- //==============自定义循环==========================
+ }
+
+  }
+   //==============自定义循环==========================
+
 
 })()
     .catch((e) => $.logErr(e))
     .finally(() => $.done())
-    
-    
+
+
 function GetCookie() {
 if($request&&$request.url.indexOf("task_done")>=0) {
    const hsurl = $request.url.split('?')[1]
@@ -258,7 +258,7 @@ if($request&&$request.url.indexOf("reaction/_play")>=0) {
    $.log(`[${zhiyi}] 获取playurl请求: 成功,playurl: ${playurl}`)
    $.msg(`playurl${status}: 成功🎉`, ``)
    const playheader =JSON.stringify($request.headers)+''
-    if(playheader)    
+    if(playheader)
 $.setdata(playheader,`playheader${status}`)
     $.log(`[${zhiyi}] 获取playheader请求: 成功,playheader: ${playheader}`)
     $.msg(`playheader${status}: 成功🎉`, ``)
@@ -318,10 +318,10 @@ let check_url = 'https://ichannel.snssdk.com/service/2/app_alert_check/?'+iid+'&
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
-  }  
+  }
 //false no function
 async function device_register(){
 let new_time = Math.round(new Date().getTime()/1000).toString();
@@ -343,10 +343,10 @@ let new_time = Math.round(new Date().getTime()/1000).toString();
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
-  }  
+  }
 //userinfo
 async function userinfo(){
 let new_time = Math.round(new Date().getTime()/1000).toString();
@@ -373,7 +373,7 @@ let new_time = Math.round(new Date().getTime()/1000).toString();
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
   }
@@ -410,10 +410,10 @@ let new_time = Math.round(new Date().getTime()/1000).toString();
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
-  }  
+  }
 //sign_in
 async function sign_in(){
 let new_time = Math.round(new Date().getTime()/1000).toString();
@@ -440,10 +440,10 @@ let new_time = Math.round(new Date().getTime()/1000).toString();
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
-  }  
+  }
 //ad
 async function ad(){
 let new_time = Math.round(new Date().getTime()/1000).toString();
@@ -470,10 +470,10 @@ let new_time = Math.round(new Date().getTime()/1000).toString();
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
-  } 
+  }
 async function ck(){
   $.log('hsurl:'+hsurl)
   $.log('hsbody:'+hsbody)
@@ -503,10 +503,10 @@ let new_time = Math.round(new Date().getTime()/1000).toString();
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
-  } 
+  }
 //play_video
 async function play_video(){
 let new_time = Math.round(new Date().getTime()/1000).toString();
@@ -515,7 +515,7 @@ let newplaybody = playbody.replace(/\d{19}/,`${item_id_inv}`)
  return new Promise((resolve) => {
     let play_video_url = {
      url: playurl,
-    	headers: JSON.parse(playheader), 	
+    	headers: JSON.parse(playheader),
      body: newplaybody
 }
    $.post(play_video_url,async(error, response, data) =>{
@@ -535,10 +535,10 @@ let newplaybody = playbody.replace(/\d{19}/,`${item_id_inv}`)
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
-  } 
+  }
 
 //video_rewards
 async function video_rewards(){
@@ -575,7 +575,7 @@ async function video_rewards(){
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
 }
@@ -606,7 +606,7 @@ let new_time = Math.round(new Date().getTime()/1000).toString();
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
   }
@@ -653,7 +653,7 @@ let new_time = Math.round(new Date().getTime()/1000).toString();
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
   }
@@ -684,7 +684,7 @@ async function add_lottery(){
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
 }
@@ -713,7 +713,7 @@ async function task_ack(){
           $.logErr(e, response);
       } finally {
         resolve();
-      } 
+      }
     })
    })
 }
