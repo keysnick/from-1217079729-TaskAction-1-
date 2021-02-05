@@ -214,46 +214,6 @@ if (!signurlArr[0]) {
     return;
   }
 
- //==============自定义循环==========================
-  if ($.isNode()) {
-    while(true){
-
-     console.log(`------------- 共${signurlArr.length}个账号----------------\n`)
-      for (let i = 0; i < signurlArr.length; i++) {
-        if (signurlArr[i]) {
-          other = ''
-          signurl = signurlArr[i];
-          signkey = signkeyArr[i];
-          farmurl = farmurlArr[i];
-          farmkey = farmkeyArr[i];
-          readurl = readurlArr[i];
-          readkey = readkeyArr[i];
-          $.index = i + 1;
-          console.log(`\n开始【今日头条极速版${$.index}】`)
-          await invite()
-          await userinfo()
-          await profit()
-          await sign_in()
-          await openbox()
-          await reading()
-          await farm_sign_in()
-          await openfarmbox()
-          await landwarer()
-          await double_reward()
-          await sleepstatus()
-          await control()
-          //await sleepstart()
-          //await sleepstop()
-          //await collectcoins(coins)
-          await showmsg()
-      }
-     }
-
-      console.log(`===本次任务执行完毕，休息20分钟-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  ===\n`)
-      await $.wait(1200000)
-
-    }
-  }else{
 
        console.log(`------------- 共${signurlArr.length}个账号----------------\n`)
         for (let i = 0; i < signurlArr.length; i++) {
@@ -285,9 +245,6 @@ if (!signurlArr[0]) {
             await showmsg()
         }
        }
-
-  }
- //==============自定义循环==========================
 
 
 })()
