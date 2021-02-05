@@ -27,7 +27,8 @@ boxjs链接  https://raw.githubusercontent.com/ziye12/JavaScript/main/Task/ziye.
 2.3 修复直播问题，采用真实直播id
 2.3 设置LIVE 为61 时  单跑直播
 2.3 修复错误，修复直播收益显示
-2.4 修复金蛋问题，增加视频收益统计，增加上限判定，达到上限不执行视频，新人请设置LIVE=62
+2.4 修复金蛋问题，增加视频收益统计，增加上限判定，达到上限以及19点后不执行视频，
+2.4 直播限制为30  设置LIVE为0 不跑直播，1跑直播和视频，2单跑直播
 
 ⚠️一共2个位置 2个ck  👉 3条 Secrets
 多账号换行
@@ -93,8 +94,8 @@ let refreshtokenVal = ``;
 let middlerefreshTOKEN = [];
 if ($.isNode()) {
     // 没有设置 XP_CASH 则默认为 0 不提现
-    CASH = process.env.XP_CASH || 15;
-    // 没有设置 XP_live 则默认为 0 不开启
+    CASH = process.env.XP_CASH || 0;
+    // 没有设置 XP_live 则默认0
     LIVE = process.env.XP_live || 0;
 }
 if ($.isNode() && process.env.XP_iboxpayHEADER) {
@@ -268,6 +269,8 @@ if (isGetCookie) {
   }
  //==============自定义循环==========================
 
+
+
     })()
     .catch((e) => {
             $.log('', `❌ ${$.name}, 失败! 原因: ${e}!`, '')
@@ -300,7 +303,7 @@ async function all() {
 
         traceid = JSON.parse(iboxpayheaderVal)["traceid"];
         token = JSON.parse(iboxpayheaderVal)["token"];
-        oldtime = traceid.substr(traceid.indexOf("161"), 13);
+        oldtime = traceid.substring(20, 33);
         O = (`${$.name + (i + 1)}🔔`);
         await console.log(`-------------------------\n\n🔔开始运行【${$.name+(i+1)}】`)
         console.log('CK获取时间:' + time(Number(oldtime)))
@@ -320,7 +323,7 @@ async function all() {
         if (!cashcs.amount && CASH >= 1 && $.coin.data.balance / 100 >= CASH) {
             await withdraw(); //提现
         }
-        if (LIVE >= 1 && nowTimes.getHours() >= 8 && nowTimes.getHours() <= 23 && $.sylist.resultCode && livecs < LIVE) {
+        if (LIVE >= 1 && nowTimes.getHours() >= 8 && nowTimes.getHours() <= 23 && $.sylist.resultCode && livecs < 30) {
             await liveslist(); //直播节目表
             dd = liveIdcd * 35 - 34
             console.log(`📍本次直播运行需要${dd}秒` + '\n')
@@ -329,7 +332,7 @@ async function all() {
 
         }
 
-        if (LIVE != 61 && $.splimit.data.isUperLimit == false || LIVE == 62) {
+        if (LIVE != 2 && nowTimes.getHours() <= 18 && $.splimit.data.isUperLimit == false || tts() <= (Number(oldtime) + 48 * 60 * 60 * 1000)) {
             tt = CS * 30 - 29
             console.log(`📍本次视频运行需要${tt}秒` + '\n')
             await play(); //播放
