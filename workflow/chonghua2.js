@@ -205,6 +205,7 @@ if ($.isNode()) {
    try { await sharevideo();}catch(e){ }
 //    await sharevideo();//分享任务
 
+ await videoread();//自动刷视频
   }
 
    await showmsg();
