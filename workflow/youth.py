@@ -29,7 +29,7 @@ cookies2 = {
   'YOUTH_WITHDRAWBODY': ''
 }
 
-COOKIELIST = [cookies1,]  # 多账号准备
+COOKIELIST = [cookies1,cookies2]  # 多账号准备
 
 # ac读取环境变量
 if "YOUTH_HEADER1" in os.environ:
