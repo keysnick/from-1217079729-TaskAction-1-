@@ -6,7 +6,7 @@ name: 抖音火山版
 on:
   workflow_dispatch:
   schedule:
-    - cron: '5 0 * * *' # UTC时间 倒推8个小时
+    - cron: '5 16 * * *' # UTC时间 +8 北京时间
   watch:
     types: started
   repository_dispatch:
