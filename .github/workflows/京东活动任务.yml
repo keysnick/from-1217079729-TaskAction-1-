@@ -69,7 +69,7 @@ jobs:
           JD_COOKIE: ${{ secrets.JD_COOKIE }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
 
-     - name: '运行 【京东压岁钱】'
+      - name: '运行 【京东压岁钱】'
         run: |
           cd ~/TaskAction
           node jd_newYearMoney.js
