@@ -435,6 +435,7 @@ return new Promise((resolve, reject) => {
 }
 
    $.post(readurl,(error, response, data) =>{
+   try{
      const result = JSON.parse(data)
       if(logs)  $.log(data)
       other +='📣文章阅读\n'
@@ -449,6 +450,7 @@ return new Promise((resolve, reject) => {
        if(result.err_no == 1028){
           other +='这篇文章已经读过了\n'
         }
+       }catch(e){}
           resolve()
     })
    })
