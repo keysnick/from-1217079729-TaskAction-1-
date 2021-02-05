@@ -44,3 +44,4 @@ jobs:
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           XP_iboxpayHEADER: ${{ secrets.XP_iboxpayHEADER }}
           XP_refreshTOKEN: ${{ secrets.XP_refreshTOKEN }}
+          XP_CASH: ${{ secrets.XP_CASH }}
