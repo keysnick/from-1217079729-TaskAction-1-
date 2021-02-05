@@ -198,7 +198,7 @@ if ($.isNode()) {
     );
   }
 
-  if (now.getHours() == 18 || now.getHours() == 19 || now.getHours() == 20){
+  if (now.getHours() == 9 ||now.getHours() == 10 ||now.getHours() == 18 || now.getHours() == 19 || now.getHours() == 20){
   try { await videoread();}catch(e){ }
 //    await videoread();//自动刷视频
   }else{
