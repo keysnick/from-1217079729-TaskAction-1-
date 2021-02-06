@@ -61,20 +61,37 @@ if ($.isNode()) {
     }
   } else {
     await downloadUrl();
-    if (!$.body) {
-      await downloadUrl('https://cdn.jsdelivr.net/gh/NobyDa/Script@master/JD-DailyBonus/JD_DailyBonus.js');
-      for (let i = 0; i < cookiesArr.length; i++) {
-        cookie = cookiesArr[i];
-        if (cookie) {
-          $.body = $.body.replace(/var Key = '.*'/, `var Key = '${cookie}'`)
-          console.log(`*****************开始京东账号${i + 1}京豆签到*******************\n`);
-          await eval($.body);
-          await $.wait(10 * 1000)
-          // console.log($.body)
-          // await evalSign($.body);
-        }
-      }
-    }
+    // if (!$.body) await downloadUrl('https://cdn.jsdelivr.net/gh/NobyDa/Script@master/JD-DailyBonus/JD_DailyBonus.js');
+    // await $.wait(10 * 1000)
+    // const promiseArr = cookiesArr.map(ck => evalSign(ck));
+    // await Promise.all(promiseArr);
+    await Promise.all(
+      cookiesArr.map(async ck => {
+        await evalSign(ck)
+      })
+    )
+
+    // for (let i = 0; i < cookiesArr.length; i++) {
+    //   cookie = cookiesArr[i];
+    //   if (cookie) {
+    //     console.log(`*****************开始京东账号${i + 1}京豆签到*******************\n`);
+    //     $.body = $.body.replace(/var Key = '.*'/, `var Key = '${cookie}'`)
+    //     new Promise((resolve) => {
+    //       $request = undefined;
+    //       $.resolve = resolve
+    //       $.body = $.body.replace(/\$done/g, '$.resolve')
+    //       $.body = $.body.replace(/\$\.done/g, '$.resolve')
+    //       $.log($.body)
+    //       try {
+    //         eval($.body)
+    //       } catch (e) {
+    //         $.logErr(e)
+    //       } finally {
+    //         resolve()
+    //       }
+    //     })
+    //   }
+    // }
   }
 })()
     .catch((e) => $.logErr(e))
@@ -268,11 +285,15 @@ function downloadUrl(url = 'https://raw.GIT_HUBusercontent.com/NobyDa/Script/mas
     })
   })
 }
-function evalSign(data) {
+function evalSign(ck) {
   return new Promise(async resolve => {
     try {
-      await eval(data);
-      await $.wait(10 * 1000);
+      $.body = $.body.replace(/var Key = '.*'/, `var Key = '${ck}'`);
+      $request = undefined;
+      $.body = $.body.replace(/\$done/g, 'resolve')
+      $.body = $.body.replace(/\$\.done/g, 'resolve')
+      eval($.body);
+      // await $.wait(10 * 1000);
     } catch (e) {
       $.logErr(e)
     } finally {
