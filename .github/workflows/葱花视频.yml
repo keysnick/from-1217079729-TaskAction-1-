@@ -8,9 +8,9 @@ on:
   schedule:
     - cron: '0 */6 * * *'
   watch:
-    types: started
+    types: conghua
   repository_dispatch:
-    types: started
+    types: conghua
 jobs:
   build:
     runs-on: ubuntu-latest
