@@ -168,11 +168,6 @@ if ($.isNode()) {
 !(async () => {
 
 
- //==============自定义循环==========================
-  if ($.isNode()) {
-    while(true){
-
-
 
      await Jsname()
   O = (`🥦${jsname}任务执行通知🔔`);
@@ -209,47 +204,6 @@ if ($.isNode()) {
   }
 
    await showmsg();
-
-   console.log(`===本次任务执行完毕，休息10分钟-北京时间(UTC+8)：${new Date(new Date().getTime() + 8 * 60 * 60 * 1000).toLocaleString()}  ===\n`)
-   await $.wait(600000)
-
-    }
-  }else{
-
-
-     await Jsname()
-  O = (`🥦${jsname}任务执行通知🔔`);
-  taskcenterbodyVal = taskcenterbodyArr[0];
-  timeredbodyVal = timeredbodyArr[0];
-  console.log(`\n✅ 查询账户明细\n`)
-  if (uid >= 1) {
-    await todaycoin(); //box填入uid
-  } else {
-    $.msg(
-      jsname,
-      "💖请到BoxJs填写自己的邀请码,保存设置\n",
-      "点击跳转,复制链接,订阅我的BoxJs", {
-        "open-url": "https://raw.githubusercontent.com/CenBoMin/GithubSync/main/cenbomin.box.json"
-      }
-    );
-  }
-
-  if (now.getHours() == 18){
-    await videoread();//自动刷视频
-  }else if (now.getHours() == 20){
-    await videoread();//自动刷视频
-  }else{
-    console.log(`\n✅ 打印任务状态清单`)
-    await taskcenter(); //任务中心
-    console.log(`\n✅ 执行时段奖励任务`)
-    await timered(task); //时段奖励
-    await sharevideo();//分享任务
-  }
-  await showmsg();
-
-
-  }
- //==============自定义循环==========================
 
 
 })()
