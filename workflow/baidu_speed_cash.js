@@ -8,7 +8,7 @@
 ~~~~~~~~~~~~~~~~
 
 */
-const $ = new Env('百度极速版')
+const $ = new Env('百度极速版提现')
 let CookieArr = [],cashArr=[];
 let UA = `Mozilla/5.0 (iPhone; CPU iPhone OS 14_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Mobile/15E148 SP-engine/2.24.0 info baiduboxapp/5.1.1.10 (Baidu; P2 14.2)`;
 const notify = $.isNode() ? require('./sendNotify') : '';
