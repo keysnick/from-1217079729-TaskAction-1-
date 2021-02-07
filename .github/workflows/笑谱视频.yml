@@ -6,7 +6,7 @@ name: 笑谱视频
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/20 0-10 * * *' # UTC时间 +8 北京
+    - cron: '*/20 0-15 * * *' # UTC时间 +8 北京
   watch:
     types: started
   repository_dispatch:
