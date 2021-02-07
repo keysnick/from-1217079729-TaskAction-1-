@@ -184,7 +184,7 @@ if ($.isNode()) {
     );
   }
 
-  if (now.getHours() == 9 ||now.getHours() == 10 ||now.getHours() == 11){
+  if (now.getHours() == 7 ||now.getHours() == 8 ||now.getHours() == 9){
   try { await videoread();}catch(e){ }
 //    await videoread();//自动刷视频
   }else{
