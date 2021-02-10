@@ -41,7 +41,7 @@ if "YOUTH_HEADER1" in os.environ:
       globals()['cookies' + str(i + 1)]["YOUTH_READTIMEBODY"] = os.environ[readTimeBodyVar]
       globals()['cookies' + str(i + 1)]["YOUTH_WITHDRAWBODY"] = os.environ[withdrawBodyVar]
       COOKIELIST.append(globals()['cookies'+str(i + 1)])
-  print(COOKIELIST)
+ # print(COOKIELIST)
 
 cur_path = os.path.abspath(os.path.dirname(__file__))
 root_path = os.path.split(cur_path)[0]
@@ -97,7 +97,7 @@ def signInfo(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('签到详情')
-    print(response)
+   # print(response)
     if response['status'] == 1:
       return response['data']
     else:
@@ -117,7 +117,7 @@ def punchCard(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('打卡报名')
-    print(response)
+   # print(response)
     if response['code'] == 1:
       return response
     else:
@@ -137,7 +137,7 @@ def doCard(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('早起打卡')
-    print(response)
+   # print(response)
     if response['code'] == 1:
       shareCard(headers=headers)
       return response['data']
@@ -159,7 +159,7 @@ def shareCard(headers):
   try:
     response = requests_session().post(url=startUrl, headers=headers, timeout=30).json()
     print('打卡分享')
-    print(response)
+   # print(response)
     if response['code'] == 1:
       time.sleep(0.3)
       responseEnd = requests_session().post(url=endUrl, headers=headers, timeout=30).json()
@@ -182,7 +182,7 @@ def luckDraw(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('七日签到')
-    print(response)
+   # print(response)
     if response['code'] == 1:
       return response['data']
     else:
@@ -202,7 +202,7 @@ def timePacket(headers):
   try:
     response = requests_session().post(url=url, data=f'{headers["Referer"].split("?")[1]}', headers=headers, timeout=30).json()
     print('计时红包')
-    print(response)
+   # print(response)
     return
   except:
     print(traceback.format_exc())
@@ -219,7 +219,7 @@ def watchWelfareVideo(headers):
   try:
     response = requests_session().get(url=url, headers=headers, timeout=30).json()
     print('观看福利视频')
-    print(response)
+   # print(response)
     return
   except:
     print(traceback.format_exc())
@@ -237,7 +237,7 @@ def shareArticle(headers):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('分享文章')
-    print(response)
+   # print(response)
     return
   except:
     print(traceback.format_exc())
@@ -256,7 +256,7 @@ def threeShare(headers, action):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('三餐分享')
-    print(response)
+   # print(response)
     return
   except:
     print(traceback.format_exc())
@@ -273,7 +273,7 @@ def openBox(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('开启宝箱')
-    print(response)
+   # print(response)
     if response['code'] == 1:
       share_box_res = shareBox(headers=headers)
       return response['data']
@@ -294,7 +294,7 @@ def shareBox(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('宝箱分享')
-    print(response)
+   # print(response)
     if response['code'] == 1:
       return response['data']
     else:
@@ -314,7 +314,7 @@ def friendList(headers):
   try:
     response = requests_session().get(url=url, headers=headers, timeout=30).json()
     print('好友列表')
-    print(response)
+   # print(response)
     if response['error_code'] == '0':
       if len(response['data']['active_list']) > 0:
         for friend in response['data']['active_list']:
@@ -339,7 +339,7 @@ def friendSign(headers, uid):
   try:
     response = requests_session().get(url=url, headers=headers, timeout=30).json()
     print('好友签到')
-    print(response)
+   # print(response)
     if response['error_code'] == '0':
       return response['data']
     else:
@@ -359,7 +359,7 @@ def sendTwentyScore(headers, action):
   try:
     response = requests_session().get(url=url, headers=headers, timeout=30).json()
     print(f'每日任务 {action}')
-    print(response)
+   # print(response)
     if response['status'] == 1:
       return response
     else:
