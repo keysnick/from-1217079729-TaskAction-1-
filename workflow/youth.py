@@ -77,7 +77,7 @@ def sign(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('签到')
-    print(response)
+   # print(response)
     if response['status'] == 1:
       return response
     else:
@@ -380,7 +380,7 @@ def watchAdVideo(headers):
   try:
     response = requests_session().post(url=url, data="type=taskCenter", headers=headers, timeout=30).json()
     print('看广告视频')
-    print(response)
+   # print(response)
     if response['status'] == 1:
       return response
     else:
@@ -401,7 +401,7 @@ def watchGameVideo(body):
   try:
     response = requests_session().post(url=url, headers=headers, data=body, timeout=30).json()
     print('激励视频')
-    print(response)
+    # print(response)
     if response['success'] == True:
       return response['items']
     else:
@@ -425,7 +425,7 @@ def visitReward(body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('回访奖励')
-    print(response)
+    # print(response)
     if response['success'] == True:
       return response['items']
     else:
@@ -449,7 +449,7 @@ def articleRed(body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('惊喜红包')
-    print(response)
+    # print(response)
     if response['success'] == True:
       return response['items']
     else:
@@ -473,7 +473,7 @@ def readTime(body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('阅读时长')
-    print(response)
+    # print(response)
     if response['error_code'] == '0':
       return response
     else:
@@ -494,7 +494,7 @@ def rotary(headers, body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('转盘任务')
-    print(response)
+    # print(response)
     return response
   except:
     print(traceback.format_exc())
@@ -512,7 +512,7 @@ def rotaryChestReward(headers, body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('转盘宝箱')
-    print(response)
+    # print(response)
     if response['status'] == 1:
       i = 0
       while (i <= 3):
@@ -540,7 +540,7 @@ def runRotary(headers, body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('领取宝箱')
-    print(response)
+    # print(response)
     if response['status'] == 1:
       return response['data']
     else:
@@ -561,7 +561,7 @@ def doubleRotary(headers, body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('转盘双倍')
-    print(response)
+    # print(response)
     if response['status'] == 1:
       return response['data']
     else:
@@ -605,7 +605,7 @@ def withdraw(body):
   try:
     response = requests_session().post(url=url, headers=headers, data=body, timeout=30).json()
     print('自动提现')
-    print(response)
+    # print(response)
     if response['success'] == True:
       return response['items']
     else:
@@ -625,7 +625,7 @@ def bereadRed(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('时段红包')
-    print(response)
+    # print(response)
     if response['code'] == 1:
       return response['data']
     else:
