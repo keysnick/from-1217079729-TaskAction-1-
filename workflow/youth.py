@@ -581,7 +581,7 @@ def incomeStat(headers):
   try:
     response = requests_session().get(url=url, headers=headers, timeout=50).json()
     print('收益统计')
-    print(response)
+   # print(response)
     if response['status'] == 0:
       return response
     else:
