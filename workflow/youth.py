@@ -14,12 +14,14 @@ from datetime import datetime, timezone, timedelta
 
 # YOUTH_HEADER 为对象, 其他参数为字符串，自动提现需要自己抓包
 # 选择微信提现30元，立即兑换，在请求包中找到withdraw2的请求，拷贝请求body类型 p=****** 的字符串，放入下面对应参数即可
+# 分享一篇文章，找到 put.json 的请求，拷贝请求体，放入对应参数
 cookies1 = {
   'YOUTH_HEADER': {},
   'YOUTH_READBODY': '',
   'YOUTH_REDBODY': '',
   'YOUTH_READTIMEBODY': '',
-  'YOUTH_WITHDRAWBODY': ''
+  'YOUTH_WITHDRAWBODY': '',
+  'YOUTH_SHAREBODY': ''
 }
 cookies2 = {}
 
@@ -34,14 +36,16 @@ if "YOUTH_HEADER1" in os.environ:
     redBodyVar = f'YOUTH_REDBODY{str(i+1)}'
     readTimeBodyVar = f'YOUTH_READTIMEBODY{str(i+1)}'
     withdrawBodyVar = f'YOUTH_WITHDRAWBODY{str(i+1)}'
+    shareBodyVar = f'YOUTH_SHAREBODY{str(i+1)}'
     if headerVar in os.environ and os.environ[headerVar] and readBodyVar in os.environ and os.environ[readBodyVar] and redBodyVar in os.environ and os.environ[redBodyVar] and readTimeBodyVar in os.environ and os.environ[readTimeBodyVar]:
       globals()['cookies'+str(i + 1)]["YOUTH_HEADER"] = json.loads(os.environ[headerVar])
       globals()['cookies'+str(i + 1)]["YOUTH_READBODY"] = os.environ[readBodyVar]
       globals()['cookies'+str(i + 1)]["YOUTH_REDBODY"] = os.environ[redBodyVar]
       globals()['cookies' + str(i + 1)]["YOUTH_READTIMEBODY"] = os.environ[readTimeBodyVar]
       globals()['cookies' + str(i + 1)]["YOUTH_WITHDRAWBODY"] = os.environ[withdrawBodyVar]
+      globals()['cookies' + str(i + 1)]["YOUTH_SHAREBODY"] = os.environ[shareBodyVar]
       COOKIELIST.append(globals()['cookies'+str(i + 1)])
- # print(COOKIELIST)
+  print(COOKIELIST)
 
 cur_path = os.path.abspath(os.path.dirname(__file__))
 root_path = os.path.split(cur_path)[0]
@@ -77,7 +81,7 @@ def sign(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('签到')
-   # print(response)
+    print(response)
     if response['status'] == 1:
       return response
     else:
@@ -97,7 +101,7 @@ def signInfo(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('签到详情')
-   # print(response)
+    print(response)
     if response['status'] == 1:
       return response['data']
     else:
@@ -117,7 +121,7 @@ def punchCard(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('打卡报名')
-   # print(response)
+    print(response)
     if response['code'] == 1:
       return response
     else:
@@ -137,7 +141,7 @@ def doCard(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('早起打卡')
-   # print(response)
+    print(response)
     if response['code'] == 1:
       shareCard(headers=headers)
       return response['data']
@@ -159,7 +163,7 @@ def shareCard(headers):
   try:
     response = requests_session().post(url=startUrl, headers=headers, timeout=30).json()
     print('打卡分享')
-   # print(response)
+    print(response)
     if response['code'] == 1:
       time.sleep(0.3)
       responseEnd = requests_session().post(url=endUrl, headers=headers, timeout=30).json()
@@ -182,7 +186,7 @@ def luckDraw(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('七日签到')
-   # print(response)
+    print(response)
     if response['code'] == 1:
       return response['data']
     else:
@@ -202,7 +206,7 @@ def timePacket(headers):
   try:
     response = requests_session().post(url=url, data=f'{headers["Referer"].split("?")[1]}', headers=headers, timeout=30).json()
     print('计时红包')
-   # print(response)
+    print(response)
     return
   except:
     print(traceback.format_exc())
@@ -219,13 +223,13 @@ def watchWelfareVideo(headers):
   try:
     response = requests_session().get(url=url, headers=headers, timeout=30).json()
     print('观看福利视频')
-   # print(response)
+    print(response)
     return
   except:
     print(traceback.format_exc())
     return
 
-def shareArticle(headers):
+def shareArticle(headers, body):
   """
   分享文章
   :param headers:
@@ -233,11 +237,10 @@ def shareArticle(headers):
   """
   url = 'https://ios.baertt.com/v2/article/share/put.json'
   headers['Content-Type'] = 'application/x-www-form-urlencoded;charset=utf-8'
-  body = 'access=WIFI&app_version=1.8.2&article_id=36240926&channel=80000000&channel_code=80000000&cid=80000000&client_version=1.8.2&device_brand=iphone&device_id=49068313&device_model=iPhone&device_platform=iphone&device_type=iphone&from=7&is_hot=0&isnew=1&mobile_type=2&net_type=1&openudid=c18a9d1f15212eebb9b8dc4c2adcc563&os_version=14.3&phone_code=c18a9d1f15212eebb9b8dc4c2adcc563&phone_network=WIFI&platform=3&request_time=1612771954&resolution=750x1334&sign=67399e61370b3fa383a34ae8025d21cb&sm_device_id=202012191748479a7e5e957ab8f5f116ea95b19fd9120d012db4c3f2b435be&stype=WEIXIN&szlm_ddid=D2U6jGsDnrrijvOmzrEwZMyw/D7WvldETrECXmh7wlq7AXd0&time=1612771954&uid=52289573&uuid=c18a9d1f15212eebb9b8dc4c2adcc563'
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('分享文章')
-   # print(response)
+    print(response)
     return
   except:
     print(traceback.format_exc())
@@ -256,7 +259,7 @@ def threeShare(headers, action):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('三餐分享')
-   # print(response)
+    print(response)
     return
   except:
     print(traceback.format_exc())
@@ -273,7 +276,7 @@ def openBox(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('开启宝箱')
-   # print(response)
+    print(response)
     if response['code'] == 1:
       share_box_res = shareBox(headers=headers)
       return response['data']
@@ -294,7 +297,7 @@ def shareBox(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('宝箱分享')
-   # print(response)
+    print(response)
     if response['code'] == 1:
       return response['data']
     else:
@@ -314,7 +317,7 @@ def friendList(headers):
   try:
     response = requests_session().get(url=url, headers=headers, timeout=30).json()
     print('好友列表')
-   # print(response)
+    print(response)
     if response['error_code'] == '0':
       if len(response['data']['active_list']) > 0:
         for friend in response['data']['active_list']:
@@ -339,7 +342,7 @@ def friendSign(headers, uid):
   try:
     response = requests_session().get(url=url, headers=headers, timeout=30).json()
     print('好友签到')
-   # print(response)
+    print(response)
     if response['error_code'] == '0':
       return response['data']
     else:
@@ -359,7 +362,7 @@ def sendTwentyScore(headers, action):
   try:
     response = requests_session().get(url=url, headers=headers, timeout=30).json()
     print(f'每日任务 {action}')
-   # print(response)
+    print(response)
     if response['status'] == 1:
       return response
     else:
@@ -380,7 +383,7 @@ def watchAdVideo(headers):
   try:
     response = requests_session().post(url=url, data="type=taskCenter", headers=headers, timeout=30).json()
     print('看广告视频')
-   # print(response)
+    print(response)
     if response['status'] == 1:
       return response
     else:
@@ -401,7 +404,7 @@ def watchGameVideo(body):
   try:
     response = requests_session().post(url=url, headers=headers, data=body, timeout=30).json()
     print('激励视频')
-    # print(response)
+    print(response)
     if response['success'] == True:
       return response['items']
     else:
@@ -425,7 +428,7 @@ def visitReward(body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('回访奖励')
-    # print(response)
+    print(response)
     if response['success'] == True:
       return response['items']
     else:
@@ -449,7 +452,7 @@ def articleRed(body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('惊喜红包')
-    # print(response)
+    print(response)
     if response['success'] == True:
       return response['items']
     else:
@@ -473,7 +476,7 @@ def readTime(body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('阅读时长')
-    # print(response)
+    print(response)
     if response['error_code'] == '0':
       return response
     else:
@@ -494,7 +497,7 @@ def rotary(headers, body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('转盘任务')
-    # print(response)
+    print(response)
     return response
   except:
     print(traceback.format_exc())
@@ -512,7 +515,7 @@ def rotaryChestReward(headers, body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('转盘宝箱')
-    # print(response)
+    print(response)
     if response['status'] == 1:
       i = 0
       while (i <= 3):
@@ -540,7 +543,7 @@ def runRotary(headers, body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('领取宝箱')
-    # print(response)
+    print(response)
     if response['status'] == 1:
       return response['data']
     else:
@@ -561,7 +564,7 @@ def doubleRotary(headers, body):
   try:
     response = requests_session().post(url=url, data=body, headers=headers, timeout=30).json()
     print('转盘双倍')
-    # print(response)
+    print(response)
     if response['status'] == 1:
       return response['data']
     else:
@@ -581,7 +584,7 @@ def incomeStat(headers):
   try:
     response = requests_session().get(url=url, headers=headers, timeout=50).json()
     print('收益统计')
-   # print(response)
+    print(response)
     if response['status'] == 0:
       return response
     else:
@@ -605,7 +608,7 @@ def withdraw(body):
   try:
     response = requests_session().post(url=url, headers=headers, data=body, timeout=30).json()
     print('自动提现')
-    # print(response)
+    print(response)
     if response['success'] == True:
       return response['items']
     else:
@@ -625,7 +628,7 @@ def bereadRed(headers):
   try:
     response = requests_session().post(url=url, headers=headers, timeout=30).json()
     print('时段红包')
-    # print(response)
+    print(response)
     if response['code'] == 1:
       return response['data']
     else:
@@ -647,6 +650,7 @@ def run():
     redBody = account['YOUTH_REDBODY']
     readTimeBody = account['YOUTH_READTIMEBODY']
     withdrawBody = account['YOUTH_WITHDRAWBODY']
+    shareBody = account['YOUTH_SHAREBODY']
     rotaryBody = f'{headers["Referer"].split("&")[15]}&{headers["Referer"].split("&")[8]}'
     sign_res = sign(headers=headers)
     if sign_res and sign_res['status'] == 1:
@@ -675,7 +679,7 @@ def run():
     visit_reward_res = visitReward(body=readBody)
     if visit_reward_res:
       content += f'\n【回访奖励】：+{visit_reward_res["score"]}青豆'
-    shareArticle(headers=headers)
+    shareArticle(headers=headers, body=shareBody)
     for action in ['beread_extra_reward_one', 'beread_extra_reward_two', 'beread_extra_reward_three']:
       time.sleep(5)
       threeShare(headers=headers, action=action)
