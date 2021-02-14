@@ -52,11 +52,4 @@ jobs:
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
 
 
-      - name: '运行 【京东年货节】'
-        run: |
-          cd ~/TaskAction
-          node jd_nh.js
-        env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
-          BARK_PUSH: ${{ secrets.BARK_PUSH }}
 
