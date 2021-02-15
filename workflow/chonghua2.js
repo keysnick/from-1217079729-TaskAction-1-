@@ -263,9 +263,9 @@ if ($.isNode()) {
     );
   }
 
-  if (hour == 5 || hour == 6) {
+  if (hour == 9 || hour == 14) {
     await videoread(); //自动刷视频
-  }else if (hour == 2) {
+  }else if (hour == 12) {
     console.log(`\n✅ 执行自行助力任务`)
     await callback();
   }else if (hour <= 18) {
