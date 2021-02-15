@@ -550,6 +550,7 @@ function AutoRead() {
       body: readbody
     };
     $.post(url, async (error, response, data) => {
+    try{
       $.begin = $.begin + 1;
       let res = $.begin % readbodyArr.length
       $.setdata(res + "", 'chgetbody_body_index');
@@ -570,6 +571,7 @@ function AutoRead() {
         readscore += readres.data.score;
 
       }
+      }catch(e){}
       resolve()
     })
   })
