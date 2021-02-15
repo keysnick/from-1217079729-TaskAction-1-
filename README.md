@@ -1,25 +1,29 @@
 薅羊毛：
 
-[@ziye12](https://github.com/ziye12/JavaScript) - 企鹅读书
+[@ziye12](https://github.com/ziye12/JavaScript) - ziye12
 
-[@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版签到
+[@CenBoMin](https://github.com/CenBoMin/GithubSync) - CenBoMin
 
-[@Sunert](https://github.com/Sunert/Scripts) - 中青看点极速版，米读自动阅读，电视家，腾讯新闻
+[@ZhiYi-N](https://github.com/ZhiYi-N/Private-Script) - ZhiYi-N
 
-[@bebestmaple](https://github.com/bebestmaple/Tieba_Github-Actions) - 贴吧签到
+[@Sunert](https://github.com/Sunert/Scripts) - Sunert
 
-[@ZhiYi-N](https://github.com/ZhiYi-N/Private-Script) - 今日头条极速版
+[@lxk0301](https://gitee.com/lxk0301/jd_scripts/tree/master/) - lxk0301
 
-[@lxk0301](https://gitee.com/lxk0301/jd_scripts/tree/master/) - 京东系列
+[@shylocks](https://bitbucket.org/jd-study/shylocks/src) - shylocks
 
-[@shylocks](https://bitbucket.org/jd-study/shylocks/src) - 京东系列2
-
-[@adwktt](https://github.com/adwktt/adwktt) - 步步宝、一刻
-
-[@CenBoMin](https://github.com/CenBoMin/GithubSync) - 葱花视频
+[@NobyDa](https://github.com/NobyDa/Script/tree/master) - NobyDa
 
 [@chavyleung](https://github.com/chavyleung/scripts) - chavyleung
 
+[@iepngs](https://github.com/iepngs/Script) - iepngs
+
+[@zZPiglet](https://github.com/zZPiglet/Task/tree/master) - zZPiglet
+
+[@Zero-S1](https://github.com/Zero-S1/xmly_speed) - Zero-S1
+
 [@whyour](https://github.com/whyour/hundun) - whyour
+
+[@adwktt](https://github.com/adwktt/adwktt) - 步步宝、一刻
 
 [@age174](https://github.com/age174/-) - age174
