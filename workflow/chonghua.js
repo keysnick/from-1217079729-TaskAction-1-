@@ -263,23 +263,20 @@ if ($.isNode()) {
     );
   }
 
-  if (hour == 5 || hour == 6 || hour == 7) {
+  if (hour == 5 || hour == 6) {
     await videoread(); //自动刷视频
-  } else if (hour <= 17) {
-
-   if (hour == 2) {
-       console.log(`\n✅ 执行自行助力任务`)
-       await callback();
-     }
-
+  }else if (hour == 2) {
+    console.log(`\n✅ 执行自行助力任务`)
+    await callback();
+  }else if (hour <= 18) {
     console.log(`\n✅ 打印任务状态清单`)
     await taskcenter(); //任务中心
     console.log(`\n✅ 执行时段奖励任务`)
     await timered(task); //时段奖励
     await sharevideo(); //分享任务
   }else {
-    console.log(`\n✅时段奖励与分享奖励已达上限,\n等待晚上11点执行自动阅读任务`)
-    tz += `\n✅时段奖励与分享奖励已达上限,\n等待晚上11点执行自动阅读任务`;
+    console.log(`\n✅时段奖励与分享奖励已达上限`)
+    tz += `\n✅时段奖励与分享奖励已达上限`;
   }
 
 
