@@ -38,6 +38,6 @@ jobs:
       - name: '运行 【中青阅读_混合】'
         run: |
           cd ~/TaskAction/workflow
-          node youth_Read3.js
+          node youth_Read_mix.js
         env:
           TZ: Asia/shanghai
