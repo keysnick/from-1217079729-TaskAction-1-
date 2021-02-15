@@ -1,4 +1,4 @@
-薅羊毛：
+饮水思源：
 
 [@ziye12](https://github.com/ziye12/JavaScript) - ziye12
 
@@ -8,9 +8,9 @@
 
 [@Sunert](https://github.com/Sunert/Scripts) - Sunert
 
-[@lxk0301](https://gitee.com/lxk0301/jd_scripts/tree/master/) - lxk0301
+[@lxk0301](https://gitee.com/lxk0301/jd_scripts/tree/master/) - 狗东系列
 
-[@shylocks](https://bitbucket.org/jd-study/shylocks/src) - shylocks
+[@shylocks](https://bitbucket.org/jd-study/shylocks/src) - 狗东系列2
 
 [@NobyDa](https://github.com/NobyDa/Script/tree/master) - NobyDa
 
@@ -20,9 +20,9 @@
 
 [@zZPiglet](https://github.com/zZPiglet/Task/tree/master) - zZPiglet
 
-[@Zero-S1](https://github.com/Zero-S1/xmly_speed) - Zero-S1
+[@Zero-S1](https://github.com/Zero-S1/xmly_speed) - 喜马拉雅极速版
 
-[@whyour](https://github.com/whyour/hundun) - whyour
+[@whyour](https://github.com/whyour/hundun) - 中青py...
 
 [@adwktt](https://github.com/adwktt/adwktt) - 步步宝、一刻
 
